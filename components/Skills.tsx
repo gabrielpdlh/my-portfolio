@@ -6,7 +6,7 @@ import { Button } from "./ui/MovingBorders";
 
 const Skills = () => {
   return (
-    <div className="py-20" id="skillks">
+    <div className="py-20" id="skills">
       <h1 className="heading">
         My
         <span className="text-green"> Skills</span>
@@ -14,7 +14,10 @@ const Skills = () => {
 
       <div className="items-center w-full mt-12 grid lg:grid-cols-3 grid-cols-2 gap-x-8 gap-y-4 justify-center">
         {workExperience.map((card) => (
-          <Button duration={Math.floor(Math.random() * 10000) + 10000} key={card.id}>
+          <Button
+            duration={Math.floor(Math.random() * 10000) + 10000}
+            key={card.id}
+          >
             <div>
               <img
                 src={card.thumbnail}

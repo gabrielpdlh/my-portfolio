@@ -1,40 +1,31 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { FaLocationArrow } from "react-icons/fa6";
-
 import { projects } from "@/data";
-import { PinContainer } from "./ui/3d-pin";
+import { TbWorld } from "react-icons/tb";
+import { FaGithub } from "react-icons/fa";
 
 const RecentProjects = () => {
   return (
-    <div className="py-20">
+    <div id="projects" className="py-20">
       <h1 className="heading">
-        A small selection of{" "}
-        <span className="text-green">recent projects</span>
+        A small selection of <span className="text-green">recent projects</span>
       </h1>
-      <div className="flex flex-wrap items-center justify-center p-4 gap-8 mt-10">
+      <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
         {projects.map((item) => (
           <div
             className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
             key={item.id}
           >
-            <PinContainer
-              title="/ui.aceternity.com"
-              href="https://twitter.com/mannupaaji"
-            >
+            <div title={item.link}>
               <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10 rounded-[0.75rem]">
-                <div
-                  className="relative w-full h-full overflow-hidden lg:rounded-3xl"
-                  style={{ backgroundColor: "#13162D" }}
-                >
-                  <img src="/bg.png" alt="bgimg" />
+                <div className="relative w-full h-full overflow-hidden rounded-[0.75rem] lg:rounded-3xl">
+                  <img
+                    src={item.img}
+                    alt="cover"
+                    className="absolute inset-0 w-full h-full object-cover rounded-[0.75rem] lg:rounded-3xl"
+                  />
                 </div>
-                <img
-                  src={item.img}
-                  alt="cover"
-                  className="z-10 absolute"
-                />
               </div>
 
               <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
@@ -66,14 +57,26 @@ const RecentProjects = () => {
                   ))}
                 </div>
 
-                <div className="flex justify-center items-center">
-                  <p className="flex lg:text-xl md:text-xs text-sm text-green">
-                    Check Live Site
-                  </p>
-                  <FaLocationArrow className="ms-3" color="#86efac" />
+                <div className="flex gap-2">
+                  <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-black rounded-lg border border-[#86efac] transition-all duration-300 hover:bg-[#86efac] hover:border-black group">
+                    <a target="blank" href={item.repo}>
+                      <FaGithub
+                        size={25}
+                        className="text-[#86efac] transition-colors duration-300 group-hover:text-black"
+                      />
+                    </a>
+                  </div>
+                  <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-[#86efac] rounded-lg border border-[#86efac] transition-all duration-300 hover:bg-black hover:border-[#86efac] group">
+                    <a target="blank" href={item.site}>
+                      <TbWorld
+                        size={25}
+                        className="text-black transition-colors duration-300 group-hover:text-[#86efac]"
+                      />
+                    </a>
+                  </div>
                 </div>
               </div>
-            </PinContainer>
+            </div>
           </div>
         ))}
       </div>
